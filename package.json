@@ -1,12 +1,12 @@
 {
   "name": "anderson-dmitry-otus",
   "version": "1.0.0",
-  "description": "",
+  "description": "education project for otus.ru 'JavaScript: Modern Frameworks' course",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": "dandgerson@gmail.com",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
