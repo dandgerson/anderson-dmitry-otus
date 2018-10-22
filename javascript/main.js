@@ -5,17 +5,17 @@ function sum(a) {
 
   if (typeof a === 'number') {
     args.push(a);
-  return subSum;
+    return subSum;
   }
   
   if (typeof a === 'undefined') {
     return function() {
       return undefined;
-    }
+    };
   }
 
   function subSum(b) {
-    if (b) {
+    if (typeof b === 'number') {
       args.push(b);
       return subSum;
     }

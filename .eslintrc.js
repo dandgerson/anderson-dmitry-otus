@@ -14,7 +14,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "mocha"
     ],
     "rules": {
         "indent": [
@@ -32,6 +33,9 @@ module.exports = {
         "semi": [
             "error",
             "always"
+        ],
+        "mocha/no-exclusive-tests": [
+            "error"
         ]
     }
 };
