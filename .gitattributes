@@ -1,0 +1,15 @@
+* text=auto
+
+# force text
+*.html text
+*.js text
+*.json text
+*.css text
+*.scss text
+*.sass text
+*.md text
+
+# binary files
+*.jpg binary
+*.gif binary
+*.png binary

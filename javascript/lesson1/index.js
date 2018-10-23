@@ -25,4 +25,6 @@ function sum(a) {
   return args.reduce((a, i) => a + i, 0);
 }
 
-console.log(sum(1)(2)(-4)());
+const simpleSum = (a, b) => a + b;
+
+module.exports = {sum, simpleSum};
