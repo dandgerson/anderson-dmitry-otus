@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * 
+ * @param {number} a 
+ */
+
 function sum(a) {
   const args = [];
 
@@ -25,6 +30,11 @@ function sum(a) {
   return args.reduce((a, i) => a + i, 0);
 }
 
+/**
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
 const simpleSum = (a, b) => a + b;
 
 const splitSum = a => {
