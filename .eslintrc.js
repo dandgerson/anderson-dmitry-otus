@@ -15,7 +15,8 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "mocha"
+        "mocha",
+        "chai"
     ],
     "rules": {
         "indent": [
