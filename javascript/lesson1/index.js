@@ -27,4 +27,10 @@ function sum(a) {
 
 const simpleSum = (a, b) => a + b;
 
-module.exports = {sum, simpleSum};
+const splitSum = a => {
+  return b => {
+    return a + b;
+  };
+};
+
+module.exports = {sum, simpleSum, splitSum};
