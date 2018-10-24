@@ -17,3 +17,4 @@
 # drivers
 *.html diff=html
 *.css diff=css
+*.md dif=markdown
