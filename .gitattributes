@@ -13,3 +13,5 @@
 *.jpg binary
 *.gif binary
 *.png binary
+
+*.html diff=html
