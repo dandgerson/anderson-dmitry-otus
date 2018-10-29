@@ -1,6 +1,7 @@
 'use strict';
 
 const lesson1 = require('./javascript/lesson1');
+// const lesson2 = require('./javascript/lesson2');
 
 console.log(`simpleSum(5, 5) // ${lesson1.simpleSum(5, 5)}`);
 console.log(`splitSum(5)(5) // ${lesson1.splitSum(5)(5)}`);
