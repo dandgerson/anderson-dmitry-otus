@@ -2,7 +2,7 @@
 
 /**
  * 
- * @param {number} a 
+ * @param {number} a
  */
 
 function sum(a) {
@@ -32,11 +32,15 @@ function sum(a) {
 
 /**
  * 
- * @param {number} a 
- * @param {number} b 
+ * @param {number} a
+ * @param {number} b
  */
 const simpleSum = (a, b) => a + b;
 
+/**
+ * 
+ * @param {number} a
+ */
 const splitSum = a => {
   return b => {
     return a + b;
