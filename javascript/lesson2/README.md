@@ -6,13 +6,13 @@
 
 #### Write a function ```promiseReduce```
 
-Write a function ```promiseReduce```, which passed:
+Write a function ```promiseReduce```, which are passed:
 
-- array of asynchronouse functions ```asyncFunctions```, returns 'Promise'
+- array of asynchronous functions ```asyncFunctions```, returns 'Promise'
 - the ```reduce``` function
 - initial value ```initialValue```
 
-```promiseReduce``` inqueue calls passed asynchronouse functions and to calls ```reduce``` immidiatly after getting result before next call of the asynchronouse function.
+```promiseReduce``` alternately calls passed asynchronous functions and to calls ```reduce``` immidiatly after getting result before next call of the asynchronous function.
 
 ```reduce``` must execute like [`Array.prototype.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce), i.e. memorize the result of the previous iteratjion.
 
