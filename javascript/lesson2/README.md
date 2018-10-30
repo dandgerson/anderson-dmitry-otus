@@ -12,7 +12,7 @@ Write a function ```promiseReduce```, which are passed:
 - the ```reduce``` function
 - initial value ```initialValue```
 
-```promiseReduce``` alternately calls passed asynchronous functions and to calls ```reduce``` immidiatly after getting result before next call of the asynchronous function.
+```promiseReduce``` alternately calls passed asynchronous functions and to calls ```reduce``` immediately after getting result before next call of the asynchronous function.
 
 ```reduce``` must execute like [`Array.prototype.reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce), i.e. memorize the result of the previous iteratjion.
 
