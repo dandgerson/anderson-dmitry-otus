@@ -2,41 +2,46 @@
 
 /**
  * 
- * @param {number} a 
+ * @param {number} a
  */
 
 function sum(a) {
-  const args = [];
-
-  if (typeof a === 'number') {
-    args.push(a);
-    return subSum;
+  // without argument
+  if (!arguments.length && a === undefined) {
+    throw new TypeError('Nothing to sum. You have to pass some arguments to sum them.');
   }
-  
-  if (typeof a === 'undefined') {
+  // explicit undefined as argument
+  if (arguments.length && a === undefined) {
     return function() {
       return undefined;
     };
   }
 
-  function subSum(b) {
-    if (typeof b === 'number') {
-      args.push(b);
-      return subSum;
-    }
-    return args.reduce((a, i) => a + i, 0);
-  }
+  const args = [];
+  
+  args.push(a);
+  return subSum;
 
-  return args.reduce((a, i) => a + i, 0);
+  function subSum(b) {
+    if (b === undefined) {
+      return args.reduce((a, i) => a + i, 0);
+    }
+    args.push(b);
+    return subSum;
+  }
 }
 
 /**
  * 
- * @param {number} a 
- * @param {number} b 
+ * @param {number} a
+ * @param {number} b
  */
 const simpleSum = (a, b) => a + b;
 
+/**
+ * 
+ * @param {number} a
+ */
 const splitSum = a => {
   return b => {
     return a + b;
