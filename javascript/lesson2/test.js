@@ -4,10 +4,10 @@ const lesson2 = require('./');
 
 describe('#promiseReduce', function() {
 
-  context('when calls without arguments', function() {
+  context('when asyncFunctions is not array of asynchronouse functions', function() {
     it('should throw error', function() {
       expect(function() {
-        lesson1.sum()();
+        lesson2.promiseReduce();
       }).to.throw(TypeError, 'Nothing to sum. You have to pass some arguments to sum them.');
     });
   });
