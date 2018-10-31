@@ -4,7 +4,9 @@
   "description": "education project for otus.ru 'JavaScript: Modern Frameworks' course",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js",
+    "start with test": "npm test & npm start"
   },
   "author": "dandgerson@gmail.com",
   "license": "ISC",
