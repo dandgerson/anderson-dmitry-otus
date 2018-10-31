@@ -7,11 +7,11 @@
 
 function sum(a) {
   // without argument
-  if (arguments.length === 0 && a === undefined) {
+  if (!arguments.length && a === undefined) {
     throw new TypeError('Nothing to sum. You have to pass some arguments to sum them.');
   }
   // explicit undefined as argument
-  if (arguments.length > 0 && a === undefined) {
+  if (arguments.length && a === undefined) {
     return function() {
       return undefined;
     };
