@@ -15,7 +15,6 @@ const asyncFunctions = [
   },
 ];
 
-const reduce = Array.prototype.reduce;
-
-lesson2.promiseReduce(asyncFunctions, reduce, 1)
-  .then(console.log);
+lesson2.promiseReduce(asyncFunctions)
+  .then(console.log)
+  .catch(console.log);
