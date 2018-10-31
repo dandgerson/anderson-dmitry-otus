@@ -38,6 +38,7 @@ module.exports = {
         ],
         "mocha/no-exclusive-tests": [
             "error"
-        ]
+        ],
+        "no-console": 0
     }
 };
