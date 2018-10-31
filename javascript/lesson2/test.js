@@ -2,13 +2,42 @@ const expect = require('chai').expect;
 
 const lesson2 = require('./');
 
-describe('#promiseReduce', function() {
+const asyncFunctions = [
+  function() {
+    console.log('fn1');
+    return Promise.resolve(1);
+  },
+  function() {
+    return new Promise(resolve => {
+      console.log('fn2');
+      setTimeout(() => resolve(2), 1000);
+    });
+  },
+];
 
-  context('when asyncFunctions is not array of asynchronouse functions', function() {
-    it('should throw error', function() {
+describe('#promiseReduce()', function() {
+
+  context('with invalid arguments', function() {
+    it('shoule throw a TypeError when asyncFunctions invalid', function() {
       expect(function() {
         lesson2.promiseReduce();
-      }).to.throw(TypeError, 'Nothing to sum. You have to pass some arguments to sum them.');
+      }).to.throw(TypeError);
+    });
+    it('shoule throw a TypeError when reduce invalid', function() {
+      expect(function() {
+        lesson2.promiseReduce(asyncFunctions, 'reduce');
+      }).to.throw(TypeError);
+    });
+    it('shoule throw a TypeError when initialValue invalid', function() {
+      expect(function() {
+        lesson2.promiseReduce(asyncFunctions, Array.prototype.reduce, 'string');
+      }).to.throw(TypeError);
+    });
+  });
+
+  context('with valid arguments', function() {
+    it('should return Promise', function() {
+      expect(lesson2.promiseReduce(asyncFunctions).toString()).to.equal('[object Promise]');
     });
   });
 
