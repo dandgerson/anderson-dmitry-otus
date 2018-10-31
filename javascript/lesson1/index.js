@@ -1,13 +1,14 @@
 'use strict';
 
 /**
+ * 
  * @param {number} a
  */
 
 function sum(a) {
   // without argument
   if (arguments.length === 0 && a === undefined) {
-    throw new Error('Nothing to sum. You have to pass some arguments to sum them.');
+    throw new TypeError('Nothing to sum. You have to pass some arguments to sum them.');
   }
   // explicit undefined as argument
   if (arguments.length > 0 && a === undefined) {
