@@ -25,10 +25,14 @@ describe('Color Code Converter API', function() {
     const url = 'http://localhost:3000/hexToRgb?hex=00ff00';
     
     it('returns status 200', function() {
-
+      request(url, function(error, response, body) {
+        expect(response.statusCode).to.equal(200);
+      });
     });
     it('returns the color in RGB', function() {
-
+      request(url, function(error, response, body) {
+        expect(body).to.equal('[0, 255, 0]');
+      });
     });
   });
 });
