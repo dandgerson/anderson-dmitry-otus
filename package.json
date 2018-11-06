@@ -4,7 +4,7 @@
   "description": "education project for otus.ru 'JavaScript: Modern Frameworks' course",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node index.js",
     "start with test": "npm test & npm start"
   },
@@ -17,6 +17,7 @@
     "eslint-plugin-chai": "0.0.1",
     "eslint-plugin-mocha": "^5.2.0",
     "eslint-plugin-react": "^7.11.1",
+    "express": "^4.16.4",
     "mocha": "^5.2.0",
     "request": "^2.88.0"
   }
