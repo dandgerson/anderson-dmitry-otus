@@ -10,19 +10,19 @@ const lesson2 = require('./javascript/lesson2');
 // console.log(`sum(undefined)() // ${lesson1.sum(undefined)()}`);
 // console.log(`sum(1)(2)(3)() // ${lesson1.sum(1)(2)(3)()}`);
 
-const asyncFunctions = [
-  function() {
-    console.log('fn1');
-    return Promise.resolve(1);
-  },
-  function() {
-    return new Promise(resolve => {
-      console.log('fn2');
-      setTimeout(() => resolve(2), 1000);
-    });
-  },
-];
+const fn1 = ()=>{
+  console.log('fn1');
+  return Promise.resolve(1);
+};
 
-lesson2.promiseReduce(asyncFunctions)
-  .then(console.log)
-  .catch(console.log);
+const fn2 = ()=>new Promise(resolve=>{
+  console.log('fn2');
+  setTimeout(()=>resolve(2), 1000);
+});
+
+lesson2.promiseReduce([fn1, fn2], (memo,value) => {
+  console.log('reduce');
+  return memo * value;
+})
+  .then(x => console.log(x))
+  .catch(x => {throw new Error(x);});

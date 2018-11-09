@@ -25,19 +25,19 @@ describe('#promiseReduce()', function() {
     });
     it('shoule throw a TypeError when reduce invalid', function() {
       expect(function() {
-        lesson2.promiseReduce(asyncFunctions, 'reduce');
+        lesson2.promiseReduce(asyncFunctions, 'reducer');
       }).to.throw(TypeError);
     });
     it('shoule throw a TypeError when initialValue invalid', function() {
       expect(function() {
-        lesson2.promiseReduce(asyncFunctions, Array.prototype.reduce, 'string');
+        lesson2.promiseReduce(asyncFunctions, (memo,value) => memo * value, 'string');
       }).to.throw(TypeError);
     });
   });
 
   context('with valid arguments', function() {
     it('should return Promise', function() {
-      expect(lesson2.promiseReduce(asyncFunctions).toString()).to.equal('[object Promise]');
+      expect(lesson2.promiseReduce(asyncFunctions, (memo,value) => memo * value) instanceof Promise).to.equal(true);
     });
   });
 
