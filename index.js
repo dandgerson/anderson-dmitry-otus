@@ -19,8 +19,12 @@ const fn2 = () => new Promise(resolve => {
   console.log('fn2');
   setTimeout(() => resolve(2), 1000);
 });
+const fn3 = () => new Promise(resolve => {
+  console.log('fn3');
+  setTimeout(() => resolve(4), 1000);
+});
 
-lesson2.promiseReduce([fn1, fn2], (accumulator, value) => {
+lesson2.promiseReduce([fn1, fn2, fn3], (accumulator, value) => {
   console.log('reduce');
   return accumulator * value;
 }, 1)
