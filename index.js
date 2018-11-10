@@ -15,14 +15,13 @@ const fn1 = ()=>{
   return Promise.resolve(1);
 };
 
-const fn2 = ()=>new Promise(resolve=>{
+const fn2 = () => new Promise(resolve => {
   console.log('fn2');
-  setTimeout(()=>resolve(2), 1000);
+  setTimeout(() => resolve(2), 1000);
 });
 
-lesson2.promiseReduce([fn1, fn2], (memo,value) => {
+lesson2.promiseReduce([fn1, fn2], (accumulator, value) => {
   console.log('reduce');
-  return memo * value;
-})
-  .then(x => console.log(x))
-  .catch(x => {throw new Error(x);});
+  return accumulator * value;
+}, 1)
+  .then(x => console.log(x));

@@ -5,25 +5,54 @@
  * ```reducer``` immediately after getting result before next call of 
  * the asynchronous function.
  * @param {array} asyncFunctions array of asynchronouse functons that returns Promise
- * @param {function} reducer callback function passed by Array.prototype.reduce
+ * @param {function} callback callback function passed by Array.prototype.reduce
  * @param {number} initialValue initial value for reduce function
  */
-function promiseReduce(asyncFunctions, reducer, initialValue=1) {
+function promiseReduce(asyncFunctions, callback, initialValue) {
   if (!asyncFunctions || typeof asyncFunctions[Symbol.iterator] !== 'function') {
-    throw TypeError('#promiseReduce() expects itarable of async functions as the First argument');
+    throw TypeError('#promiseReduce() expects iterable of async functions as the First argument');
   }
-  if (typeof reducer !== 'function') {
+  if (typeof callback !== 'function') {
     throw TypeError('#promiseReduce() expects function as the Second argument');
   }
   if (typeof initialValue !== 'number') {
     throw TypeError('#promiseReduce() expects Number as the Third argument');
   }
 
-  const promises = Array.prototype.map.call(asyncFunctions, (func => func()));
-  
-  return Promise.all(promises).then(results=>{
-    return Array.prototype.reduce.call(results, reducer, initialValue);
+  if (Object.prototype.toString.call(asyncFunctions) !== '[Object Array]') {
+    asyncFunctions = Array.from(asyncFunctions);
+  }
+
+  return new Promise(resolve => {
+    let count = 0;
+    let result = initialValue;
+    
+    caller(asyncFunctions);
+    
+    function caller(asyncFunctions) {
+      if (count < asyncFunctions.length) {
+        asyncFunctions[count]()
+          .then(x => {
+            result = callback(result, x);
+            count++;
+            caller(asyncFunctions);
+          });
+      } else {
+        resolve(result);
+      }
+    }
   });
 }
 
 module.exports = {promiseReduce};
+
+/**
+ * We need: 
+ * 1. вызвать функцию
+ * 2. словить её возвращаемое значение
+ * 3. запустить reducer
+ * 4. сохранить промежуточное значение
+ * 5. перейти к следующей функции
+ * 6. выполнить 1 - 4.
+ * если функции кончились -> вывести значение аккумулятора.
+ */
