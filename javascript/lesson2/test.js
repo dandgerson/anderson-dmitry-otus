@@ -37,7 +37,7 @@ describe('#promiseReduce()', function() {
 
   context('with valid arguments', function() {
     it('should return Promise', function() {
-      expect(lesson2.promiseReduce(asyncFunctions, (memo,value) => memo * value) instanceof Promise).to.equal(true);
+      expect(lesson2.promiseReduce(asyncFunctions, (memo,value) => memo * value, 1) instanceof Promise).to.equal(true);
     });
   });
 
