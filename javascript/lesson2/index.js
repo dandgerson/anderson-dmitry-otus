@@ -27,15 +27,15 @@ function promiseReduce(asyncFunctions, callback, initialValue) {
     let index = 0,
       memo = null;
     
-    reduce(index, callback, initialValue);
+    reducer(index, callback, initialValue);
     
-    function reduce(index, callback, initialValue) {
+    function reducer(index, callback, initialValue) {
       if (index < asyncFunctions.length) {
         asyncFunctions[index]()
           .then(result => {
             memo = callback(initialValue, result);
             index++;
-            reduce(index, callback, memo);
+            reducer(index, callback, memo);
           });
       } else {
         resolve(memo);
