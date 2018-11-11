@@ -1,0 +1,251 @@
+17:48:05	 From v1690 to All panelists : Hello!
+17:48:17	 From Пользователь Отус : Привет!
+17:48:35	 From Dmitry G. Anderson to All panelists : Всем привет
+17:48:40	 From Dmitry G. Anderson to All panelists : ++
+17:50:03	 From Dmitry G. Anderson : ++
+17:50:04	 From v1690 to All panelists : +
+17:50:07	 From Andrey : +
+17:50:07	 From Methos(Sergey) : да
+17:50:19	 From Methos(Sergey) : Привет!
+17:51:20	 From Юрий Тимофеев to All panelists : Добрый вечер! Картинка есть, презентацию видно, курсор ездит
+17:51:23	 From Dmitry G. Anderson : пользуясь временем Я всю неделю добирал git и к сожалению пока мне не очевидно, как из командрой строки сделать pull request
+17:52:04	 From Methos(Sergey) : Сегодня как раз создал :)
+17:52:11	 From Dmitry G. Anderson : ага).. на кнопочку зелёную нажать)
+17:52:21	 From Dmitry G. Anderson : гит супер, особенно если глубже копнёшь
+17:53:05	 From Dmitry G. Anderson : опыта с другими VCS нет но судя из книги, он забрал самое лучшее
+17:53:46	 From Юрий Тимофеев to All panelists : А что за книга?
+17:53:53	 From v1690 : Я Владимир)
+17:54:10	 From v1690 : нет) у меня микрофона нет) наверно случайно нажал
+17:54:31	 From Andrey : ++
+17:54:32	 From Methos(Sergey) : +
+17:54:40	 From Methos(Sergey) : быстрее
+17:54:40	 From v1690 : pro git огонь
+17:54:41	 From Юрий Тимофеев to All panelists : У меня уже 22 часа, я только в чате
+17:54:41	 From Dmitry G. Anderson : да я её имел ввиду PRO GIt
+17:54:47	 From Пользователь Отус to v1690, All Panelists : https://git-scm.com/book/ru/v2
+17:55:28	 From Александр : Чакон и Штрауб : Git для профессинального программиста
+17:55:57	 From Dmitry G. Anderson : благодарю)
+17:56:01	 From Александр : она по сайту этому сделана
+17:56:20	 From Dmitry G. Anderson : Кантора скринкаст посмотрел по гиту тоже
+17:56:44	 From Пользователь Отус : https://docs.google.com/document/d/13Q5dJqPHhQmsM-m45i0ffNpAGRuCaBWxqezMG5S8ZJY/edit#heading=h.1fob9te
+17:56:51	 From Юрий Тимофеев to All panelists : Я по stackoverflow изучал :/
+17:58:29	 From Dmitry G. Anderson : собеседовали всмысле?
+17:59:02	 From Александр : Когда мы перейдём на занятия 2 раза в неделю?
+17:59:26	 From Александр : спасибо
+18:00:19	 From Григорий Балабанов to All panelists : добрый вечер!
+18:00:41	 From Andrey : +
+18:00:42	 From Vladimir to All panelists : ++
+18:00:43	 From Григорий Балабанов to All panelists : +
+18:00:44	 From Max Morjakov to All panelists : +
+18:00:44	 From Александр : +
+18:00:44	 From Юрий Тимофеев to All panelists : +
+18:00:45	 From Methos(Sergey) : +
+18:00:45	 From Dmitry G. Anderson : ++
+18:08:36	 From Methos(Sergey) : объект
+18:08:37	 From Dmitry G. Anderson : закладывает ООП
+18:08:38	 From nchernetsov : Выделение общего кода
+18:08:38	 From Methos(Sergey) : свойства
+18:08:55	 From Methos(Sergey) : Добавление свойств обьекта
+18:09:00	 From nchernetsov : и даже выделение общего функционала
+18:09:18	 From nchernetsov : Я - Никита Чернецов
+18:10:24	 From Andrey : 2
+18:10:24	 From Methos(Sergey) : 3
+18:10:25	 From nchernetsov : 4)
+18:10:27	 From Olga to All panelists : 3
+18:10:28	 From Max Morjakov : 4
+18:10:29	 From Dmitry G. Anderson : 4
+18:10:29	 From Григорий Балабанов to All panelists : 4
+18:10:35	 From Vladimir to All panelists : 4
+18:11:01	 From Methos(Sergey) : самомодифицирующий код, создание свойств
+18:11:16	 From nchernetsov : Это больше reflection
+18:12:59	 From Dmitry G. Anderson : полиморфизм, это когда в экземпляре объекта можно переопределить метод предка. Я верно понимаю?
+18:13:18	 From Methos(Sergey) : Args - да, точно :)
+18:13:19	 From Dmitry G. Anderson : всмысле класса
+18:14:05	 From Methos(Sergey) : объект + свойства
+18:15:18	 From nchernetsov : Плохо?
+18:15:18	 From Methos(Sergey) : Объекты создаются со свойствами :)
+18:15:24	 From Юрий Тимофеев to All panelists : Довольно причудливо
+18:15:27	 From Methos(Sergey) : Скрытие под вопросом :)
+18:15:35	 From Dmitry G. Anderson : в ООП только номанальное скрытие через подчёркивание _
+18:15:47	 From Olga to All panelists : скрытие если без this объявить функцию
+18:15:50	 From Methos(Sergey) : private не замечен :)
+18:15:52	 From Vladimir to All panelists : минифай)
+18:15:58	 From Olga to All panelists : ней доступа не будет снаружи
+18:16:06	 From Dmitry G. Anderson : инкапсулированные методы начинаются с нижнего подчёркивания.
+18:16:10	 From Dmitry G. Anderson : да можно.. 
+18:16:14	 From Юрий Тимофеев to All panelists : вот-вот, но это - боль!
+18:16:25	 From Methos(Sergey) : Скорее да, если как-то выносить во внешний свойства
+18:16:32	 From Methos(Sergey) : скорее всего путь там есть :)
+18:16:33	 From Dmitry G. Anderson : использование геттеров и сеттеров
+18:16:38	 From Юрий Тимофеев to All panelists : Хотя можно сделать геттеры-сеттеры такие, что
+18:18:52	 From Юрий Тимофеев to All panelists : В TypeScript-е есть скрытие
+18:20:02	 From Dmitry G. Anderson : Object.create(object, prototype);
+18:20:07	 From Methos(Sergey) : Net
+18:20:08	 From Dmitry G. Anderson : нет)
+18:20:09	 From Methos(Sergey) : :)
+18:20:10	 From Юрий Тимофеев to All panelists : Видел в старых исходниках
+18:21:18	 From Dmitry G. Anderson : да да).. я ошибся
+18:23:51	 From Dmitry G. Anderson : а в строгом режиме должна ошибка возникать и delete на несуществуюещее свойство?
+18:24:48	 From nchernetsov : Проще говоря, в JS нет классов, а есть наследование свойств от объекта-прототипа
+18:26:59	 From Dmitry G. Anderson : перезапишется создаваемый объект
+18:27:23	 From Dmitry G. Anderson : затрётся объект описываемый в теле конструктора
+18:27:23	 From Vladimir to All panelists : полуим этот объект вместо this
+18:27:40	 From Olga to All panelists : объект вернется, если вовзращать свойтсво- не вернется
+18:28:35	 From Methos(Sergey) : +
+18:28:36	 From Юрий Тимофеев to All panelists : +
+18:29:53	 From Dmitry G. Anderson to All panelists : всё проигнорируется
+18:30:24	 From Olga to All panelists : ?
+18:30:27	 From Andrey : ?
+18:30:29	 From Methos(Sergey) : ?
+18:33:54	 From Dmitry G. Anderson to All panelists : !
+18:34:15	 From Dmitry G. Anderson to All panelists : можно
+18:34:19	 From Dmitry G. Anderson to All panelists : не разобрался пока как
+18:35:05	 From Юрий Тимофеев to All panelists : 1
+18:35:10	 From Methos(Sergey) : Лучше вместе :)
+18:35:31	 From Dmitry G. Anderson to All panelists : да можно
+18:36:03	 From Methos(Sergey) : +
+18:36:03	 From Andrey : +
+18:36:05	 From Александр to All panelists : +
+18:36:07	 From Юрий Тимофеев to All panelists : Слышно
+18:38:58	 From Юрий Тимофеев to All panelists : Object.setPrototypeOf
+18:39:22	 From Юрий Тимофеев to All panelists : не b.setPrototypeOf  а Object.setPrototypeOf
+18:40:46	 From Methos(Sergey) : +
+18:40:46	 From Andrey : +
+18:40:47	 From Dmitry G. Anderson to All panelists : ++
+18:42:30	 From Methos(Sergey) : в Реактив только так в основном :)
+18:42:45	 From Methos(Sergey) : (React)
+18:43:16	 From Methos(Sergey) : Да много :) Stateless
+18:44:42	 From nchernetsov : static добавляет функцию к прототипу?
+18:46:02	 From Methos(Sergey) : +
+18:46:52	 From Methos(Sergey) : обещание
+18:52:17	 From Methos(Sergey) : да
+18:53:35	 From Methos(Sergey) : :) почему rejected ?
+18:53:39	 From Dmitry G. Anderson to All panelists : then() может принимать и второй callback аналогичный catch
+18:53:40	 From Methos(Sergey) : Из за throw?
+18:54:00	 From Vladimir to All panelists : каждый then возвращает promise
+18:54:40	 From Methos(Sergey) : аа
+18:55:58	 From Dmitry G. Anderson to All panelists : выполнение пропускает then и выполняется первый catch
+18:56:10	 From Methos(Sergey) : 1
+18:56:21	 From nchernetsov : 1, undefined
+18:56:22	 From Max Morjakov : 2 раза 1
+18:56:27	 From Vladimir to All panelists : 1б гтвуа
+18:56:33	 From Vladimir to All panelists : 1, undefined)
+18:56:40	 From Dmitry G. Anderson to All panelists : два раза выведет 1
+18:56:46	 From Vladimir to All panelists : а не
+18:56:55	 From Dmitry G. Anderson to All panelists : 1  и undefined
+18:56:57	 From Methos(Sergey) : 1 undefined
+18:56:57	 From Vladimir to All panelists : 1, Promise.toString()
+18:57:13	 From Юрий Тимофеев to All panelists : 1 1
+18:57:35	 From Dmitry G. Anderson to All panelists : третьему промису мы не передали  аргумент
+18:57:44	 From Methos(Sergey) : +
+18:58:14	 From Methos(Sergey) : return
+18:58:15	 From Methos(Sergey) : да
+18:58:51	 From Methos(Sergey) : 4 :)
+18:58:54	 From nchernetsov : 2, 4, 4
+18:58:54	 From Юрий Тимофеев to All panelists : 4
+18:59:02	 From Andrey : 4
+18:59:23	 From Dmitry G. Anderson to All panelists : 2, ошибка 3, 4, 4
+18:59:25	 From nchernetsov : а, хотя 4
+19:00:21	 From Dmitry G. Anderson to All panelists : а да да))
+19:01:45	 From Methos(Sergey) : Когда все исполнится :)
+19:02:41	 From Methos(Sergey) : 1 reject
+19:02:45	 From Dmitry G. Anderson to All panelists : catch нужно подписывать
+19:05:52	 From Methos(Sergey) : те функцию, куда поступают два параметра promis1. Promise2 и соответственно формируются promise из параметров, а затем выполняется promiseAll
+19:06:41	 From Юрий Тимофеев to All panelists : То есть, не любой длины, это меняет дело, да
+19:07:05	 From Юрий Тимофеев to All panelists : входной массив промисов
+19:07:31	 From Methos(Sergey) : Function promisePolyfil(arg1, arg2) {
+
+Promise.reolve(arg1).then( () => console.log(‘’Hello))
+}
+19:07:33	 From Methos(Sergey) : ..
+19:07:38	 From Methos(Sergey) : Часть функции
+19:07:39	 From Methos(Sergey) : :)
+19:07:43	 From Dmitry G. Anderson to All panelists : я могу попробовать
+19:07:49	 From Dmitry G. Anderson to All panelists : составить компанию
+19:08:31	 From Andrey : +
+19:08:31	 From Юрий Тимофеев to All panelists : Все таки, для 2-х аргументов или произвольное количество?
+19:08:32	 From Methos(Sergey) : +
+19:08:33	 From Dmitry G. Anderson to All panelists : ++
+19:08:35	 From mikhail to All panelists : +
+19:11:42	 From Methos(Sergey) : полиморфизм
+19:11:43	 From Methos(Sergey) : :)
+19:13:30	 From Methos(Sergey) : тот который первый
+19:13:33	 From Methos(Sergey) : фиксировать
+19:15:26	 From Methos(Sergey) : Возвращаем же массив?
+19:17:00	 From Methos(Sergey) : Try catch
+19:19:06	 From nchernetsov : а с массивом rejected мы ничего не делаем
+19:20:39	 From Methos(Sergey) : +
+19:20:40	 From Andrey : +
+19:20:40	 From Max Morjakov : +
+19:21:15	 From Dmitry G. Anderson to All panelists : а вы кстати тоже тему Nord используете на  vscode?
+19:21:22	 From Methos(Sergey) : +
+19:21:51	 From Methos(Sergey) : 2017
+19:23:03	 From Dmitry G. Anderson to All panelists : а он в каком виде резолвится.. в вине вызова new или со статическим резолвом?
+19:23:44	 From Dmitry G. Anderson to All panelists : +
+19:25:18	 From Methos(Sergey) : iife можем :)
+19:25:57	 From Methos(Sergey) : 1 try catch
+19:26:32	 From Methos(Sergey) : Try { внутри await }
+19:26:34	 From Dmitry G. Anderson to All panelists : для меня сходу не очевидным кажется решение
+19:26:52	 From Methos(Sergey) : catch (e) { console.log(e) }
+19:27:03	 From Methos(Sergey) : А здесь просто перевести на await
+19:27:37	 From Dmitry G. Anderson to All panelists : ++
+19:27:44	 From Methos(Sergey) : Await render.return
+19:28:06	 From Methos(Sergey) : await fetch
+19:28:17	 From Dmitry G. Anderson to All panelists : можно ли fetch назвать абстракцией AJAX
+19:29:34	 From Methos(Sergey) : Await reader
+19:32:10	 From Methos(Sergey) : лучше = меньше кода :)
+19:32:16	 From Methos(Sergey) : Нет цепочек
+19:32:18	 From nchernetsov : меньше вложенных вызовов
+19:33:28	 From Юрий Тимофеев to All panelists : выкидывает и resolve и куоусе
+19:33:35	 From Юрий Тимофеев to All panelists : /reject
+19:33:36	 From Methos(Sergey) : странно
+19:33:40	 From Methos(Sergey) : Result
+19:33:40	 From Dmitry G. Anderson to All panelists : вложенный вызов функции
+19:33:43	 From Methos(Sergey) : без array
+19:33:46	 From Dmitry G. Anderson to All panelists : reject
+19:33:47	 From Methos(Sergey) : arrow
+19:33:49	 From Methos(Sergey) : function
+19:34:03	 From Methos(Sergey) : Без then
+19:34:26	 From Methos(Sergey) : может быть .then((result) =>
+19:34:27	 From Methos(Sergey) : ..
+19:34:31	 From Dmitry G. Anderson to All panelists : у нас не обрабатывается
+19:34:44	 From Dmitry G. Anderson to All panelists : doSomethingElse()'
+19:35:09	 From Dmitry G. Anderson to All panelists : всмысле не ловится reject
+19:36:20	 From Methos(Sergey) : Нет :)
+19:37:20	 From Dmitry G. Anderson to All panelists : да, конечно
+19:37:34	 From Methos(Sergey) : +
+19:38:02	 From Methos(Sergey) : fetch
+19:38:03	 From Methos(Sergey) : Get
+19:38:04	 From Methos(Sergey) : post
+19:38:21	 From Юрий Тимофеев to All panelists : олдскульный - через iframe :)
+19:38:41	 From Vladimir : $.ajax)
+19:38:59	 From Vladimir : самый простой)
+19:39:04	 From Юрий Тимофеев to All panelists : без axios даже теряюсь
+19:39:14	 From Methos(Sergey) : yes
+19:39:29	 From Methos(Sergey) : +
+19:39:40	 From Methos(Sergey) : JS + get + cookie
+19:40:27	 From Methos(Sergey) : url
+19:40:31	 From Methos(Sergey) : А да :)
+19:40:37	 From Methos(Sergey) : Image тояно
+19:40:40	 From Methos(Sergey) : точно
+19:41:30	 From Dmitry G. Anderson to All panelists : я смотрел ваш вебинар открытый по нему..
+19:45:06	 From Dmitry G. Anderson to All panelists : а про генераторы я правильно понимаю, что генераторы нужны для реализации промисов, промисы нужны для async
+19:46:19	 From Dmitry G. Anderson to All panelists : +
+19:47:12	 From Dmitry G. Anderson to All panelists : согласен
+19:48:35	 From Юрий Тимофеев to All panelists : аккумулятор редьюса может быть промисом. Недавно в рассылке по JS было
+19:49:10	 From Methos(Sergey) : Await
+19:49:14	 From Methos(Sergey) : можно использовать?
+19:49:57	 From nchernetsov : а зачем тут асинхронность, если функции друг за другом выполняются?
+19:50:51	 From Methos(Sergey) : Просто о сложном, поэтому 10 :)
+19:50:53	 From Юрий Тимофеев to All panelists : Спасибо
+19:50:53	 From nchernetsov : Темы более менее понятны, но материал не простой (8)
+19:50:59	 From Max Morjakov : да, 8
+19:51:01	 From Григорий Балабанов : 9
+19:51:11	 From Dmitry G. Anderson to All panelists : всё что разбиралось было понятно. Жаль что не успели то, что запланировали.
+7
+19:51:13	 From Григорий Балабанов : Спасибо!
+19:51:19	 From Max Morjakov : спасибо
+19:51:29	 From Methos(Sergey) : ок, спасибо, пока!
+19:51:34	 From Юрий Тимофеев to All panelists : До свидания!
+19:51:39	 From Dmitry G. Anderson to All panelists : Благодарю Вас. Очень всё понравилось всего доброго всем покуа
+19:51:47	 From Dmitry G. Anderson to All panelists : *пока)
