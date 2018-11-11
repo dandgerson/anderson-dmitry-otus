@@ -24,21 +24,21 @@ function promiseReduce(asyncFunctions, callback, initialValue) {
   }
 
   return new Promise(resolve => {
-    let count = 0;
-    let result = initialValue;
+    let index = 0,
+      memo = null;
     
-    caller(asyncFunctions);
+    reduce(index, callback, initialValue);
     
-    function caller(asyncFunctions) {
-      if (count < asyncFunctions.length) {
-        asyncFunctions[count]()
-          .then(x => {
-            result = callback(result, x);
-            count++;
-            caller(asyncFunctions);
+    function reduce(index, callback, initialValue) {
+      if (index < asyncFunctions.length) {
+        asyncFunctions[index]()
+          .then(result => {
+            memo = callback(initialValue, result);
+            index++;
+            reduce(index, callback, memo);
           });
       } else {
-        resolve(result);
+        resolve(memo);
       }
     }
   });
