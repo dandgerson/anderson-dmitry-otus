@@ -1,16 +1,21 @@
 'use strict';
 
-console.log('I\'m a server');
-
 const http = require('http');
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
+let requestCount = 0;
+let responseCount = 0;
+
 const server = http.createServer((request, response) => {
-  response.writeHead(200, {'Content-Type': 'text/html'});
-  response.write('Hello Server is alive<br>');
-  response.end('Hello World\n');
+  console.log('request starting... ' + requestCount++);
+  
+  //response
+  console.log('response starting... ' + responseCount++);
+  response.writeHeader(200, {'Content-Type': 'text/html'});
+  response.write('hello client<br>\n');
+  response.end();
 });
 
 server.listen(port, hostname, () => {
