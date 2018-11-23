@@ -9,7 +9,9 @@ let requestCount = 0;
 let responseCount = 0;
 
 const server = http.createServer((request, response) => {
-  console.log('request starting... ' + requestCount++);
+  if (request) {
+    console.log('request starting... ' + requestCount++);
+  }
   
   //response
   console.log('response starting... ' + responseCount++);
