@@ -2,11 +2,17 @@
 
 const http = require('http');
 
+const requestModule = require('./request');
+
 const hostname = '127.0.0.1';
 const port = 3000;
 
 let requestCount = 0;
 let responseCount = 0;
+
+const requester = new requestModule.Requester(10, 'parallel');
+
+const requests = requester.makeRequests();
 
 const server = http.createServer((request, response) => {
   if (request) {

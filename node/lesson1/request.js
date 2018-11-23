@@ -1,6 +1,7 @@
 'use strict';
 
 const http = require('http');
+const promiseReduceModule = require('./promise-reduce');
 
 class Requester {
   constructor(n, requestType) {
@@ -13,13 +14,17 @@ class Requester {
   validateArgs(n, requestType) {
     if (typeof n !== 'number')
       throw new TypeError('n must be a number');
-    if (n <= 0)
+    if (n <= 0){
       throw new ReferenceError('n must be a positive');
-    if (n !== Math.ceil(this.n))
+    }
+    if (n !== Math.floor(n)) {
+      console.log(n);
       throw new ReferenceError('n must be an integer');
-    
-    if (requestType !== 'serial' || requestType !== 'parallel')
+    }
+    if (requestType !== 'serial' && requestType !== 'parallel') {
+      console.log(requestType);
       throw new ReferenceError('requestType must be "serial" or "parallel"');
+    }
   }
   
   makeRequests() {
@@ -27,7 +32,7 @@ class Requester {
     let count = 0;
 
     while(count < this.n) {
-      this.request.push(
+      this.requests.push(
         new Promise((resolve, reject) => {
           resolve(
             http.request()
@@ -37,33 +42,21 @@ class Requester {
 
       count++;
     }
+    return this.requests;
   }
 
   senRequests() {
     if (this.requestType === 'parallel') {
       Promise.all(this.requests);
     } else {
-      
+      promiseReduceModule.promiseReduce(this.requests,
+        () => {
+        
+        },
+        0
+      );
     }
   }
 }
 
-function requester(n, requestType = 'parallel') {
-  if (typeof n !== 'number') 
-    throw new TypeError('n must be a number');
-  
-  let count = n;
-  const requests = new Array(n);
-  
-  switch (requestType) {
-  case 'parallel':
-    break;
-  case 'serial':
-    while(count) {
-      http.request()
-    }
-    break;
-  default:
-    throw new ReferenceError('requestType require "serial" or "parallel" value')
-  }
-}
+module.exports = {Requester};
