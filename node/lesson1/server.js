@@ -17,7 +17,10 @@ const server = http.createServer((request, response) => {
   console.log('response starting... ' + responseCount++);
   response.writeHeader(200, {'Content-Type': 'text/html'});
   response.write('hello client<br>\n');
-  response.end();
+  
+  setTimeout(() => {
+    response.end();
+  }, 5000);
 });
 
 server.listen(port, hostname, () => {
