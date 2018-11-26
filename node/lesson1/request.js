@@ -1,17 +1,16 @@
 'use strict';
 
 const http = require('http');
-const promiseReduceModule = require('./promise-reduce');
 
 class Requester {
   constructor(n, requestType) {
-    this.validateArgs(n, requestType);
+    this.validate(n, requestType);
     
     this.n = n;
     this.requestType = requestType;
   }
   
-  validateArgs(n, requestType) {
+  validate(n, requestType) {
     if (typeof n !== 'number')
       throw new TypeError('n must be a number');
     if (n <= 0) {
@@ -27,31 +26,28 @@ class Requester {
     }
   }
   
-  makeRequests() {
+  make() {
     this.requests = new Array(this.n);
     let index = 0;
 
     while(index < this.n) {
       // error
-      this.requests[index] = Promise.resolve(http.get('http://localhost'));
+      this.requests[index] = new Promise((resolve, reject) => {
+        resolve(http.get('http://127.0.0.1:3000/'));
+      });
 
       index++;
     }
-    return this.requests;
+    return this;
   }
 
-  sendRequests() {
+  send() {
     if (this.requestType === 'parallel') {
       Promise.all(this.requests);
     } else {
-      promiseReduceModule.promiseReduce(this.requests,
-        () => {
-        
-        },
-        0
-      );
+      // ???
     }
   }
 }
 
-module.exports = {Requester};
+exports.requester = Requester;
