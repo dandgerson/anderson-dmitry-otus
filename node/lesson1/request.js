@@ -14,7 +14,7 @@ class Requester {
   validateArgs(n, requestType) {
     if (typeof n !== 'number')
       throw new TypeError('n must be a number');
-    if (n <= 0){
+    if (n <= 0) {
       throw new ReferenceError('n must be a positive');
     }
     if (n !== Math.floor(n)) {
@@ -29,23 +29,18 @@ class Requester {
   
   makeRequests() {
     this.requests = new Array(this.n);
-    let count = 0;
+    let index = 0;
 
-    while(count < this.n) {
-      this.requests.push(
-        new Promise((resolve, reject) => {
-          resolve(
-            http.request()
-          );
-        })
-      );
+    while(index < this.n) {
+      // error
+      this.requests[index] = Promise.resolve(http.get('http://localhost'));
 
-      count++;
+      index++;
     }
     return this.requests;
   }
 
-  senRequests() {
+  sendRequests() {
     if (this.requestType === 'parallel') {
       Promise.all(this.requests);
     } else {

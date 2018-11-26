@@ -10,10 +10,6 @@ const port = 3000;
 let requestCount = 0;
 let responseCount = 0;
 
-const requester = new requestModule.Requester(10, 'parallel');
-
-const requests = requester.makeRequests();
-
 const server = http.createServer((request, response) => {
   if (request) {
     console.log('request starting... ' + requestCount++);
@@ -26,8 +22,11 @@ const server = http.createServer((request, response) => {
   
   setTimeout(() => {
     response.end();
-  }, 5000);
+  }, 100);
 });
+
+const requester = new requestModule.Requester(10, 'parallel');
+const requests = requester.makeRequests();
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

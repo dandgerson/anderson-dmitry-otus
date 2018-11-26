@@ -13,5 +13,4 @@ Write a script ```request``` for server testing:
   - number of requests ```n```
   - type of request ```'parallel'``` or ```'serial'```
 
-The sctipt must sends to local **server** ```n``` *serial* or *parallel*
-**'http'** requests.
+The sctipt must sends to local **server** ```n``` *serial* or *parallel* **'http'** requests.
