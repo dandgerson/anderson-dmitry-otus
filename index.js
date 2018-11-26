@@ -1,4 +1,4 @@
 'use strict';
 
 
-const nodeLesson1 = require('./node/lesson1');
+// no npm scripts yet
