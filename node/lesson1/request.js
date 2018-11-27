@@ -16,7 +16,7 @@ class Requester {
     if (n <= 0) {
       throw new ReferenceError('n must be a positive');
     }
-    if (n !== Math.floor(n)) {
+    if (!Number.isInteger(n)) {
       console.log(n);
       throw new ReferenceError('n must be an integer');
     }
