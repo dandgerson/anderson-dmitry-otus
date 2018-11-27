@@ -45,7 +45,10 @@ class Requester {
     if (this.requestType === 'parallel') {
       Promise.all(this.requests);
     } else {
-      // ???
+      let maked = 0;
+      for (const request of this.requests) {
+        request.then(result => console.log(++maked + ' request is maked'));
+      }
     }
   }
 }
