@@ -44,12 +44,18 @@ class Requester {
   send() {
     if (this.requestType === 'parallel') {
       Promise.all(this.requests);
-    } else {
+      return;
+    } 
+    if (this.requestType === 'serial') {
       let maked = 0;
       for (const request of this.requests) {
         request.then(result => console.log(++maked + ' request is maked'));
       }
+      return;
     }
+    console.error(`
+      this code have not to being executed, 
+      but if you see this message, something goes wrong`);
   }
 }
 
