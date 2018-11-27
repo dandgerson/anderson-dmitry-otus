@@ -1,11 +1,35 @@
 'use strict';
 
-function getTree(path) {
-  const tree = {};
-  tree.path = path;
-  
+const fs = require('fs');
+const path = require('path');
 
-  return JSON.stringify(tree);
+class Tree {
+  constructor(path) {
+    this.validate(path);
+
+    this.path = path;
+  }
+  validate(path) {
+    if (typeof path !== 'string') {
+      throw new Error('path must have a string type value');
+    }
+  }
+  
+  getTree() {
+    const tree = {
+      files: [],
+      dirs: []
+    };
+    tree.path = this.path;
+
+    fs.readFile(this.path, {encoding: 'utf8'}, (err, data) => {
+      if (err) throw err;
+      console.log(data);
+    });
+  
+  }
+
 }
 
-exports.getTree = getTree;
+
+exports.tree = Tree;

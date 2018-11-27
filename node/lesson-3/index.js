@@ -2,6 +2,7 @@
 
 const tree = require('./tree');
 
-const result = tree.getTree('C:\\Users\\dandgerson\\sandbox\\anderson-dmitry-otus\\javascript');
+const result = new tree.tree('../lesson-3/test.txt')
+  .getTree();
 
 console.log(result);
