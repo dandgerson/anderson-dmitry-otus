@@ -1,5 +1,4 @@
 'use strict';
-
 const http = require('http');
 
 const request = require('./request');
@@ -26,7 +25,7 @@ const server = http.createServer((req, res) => {
   }, delay);
 });
 
-new request.requester(1000, 'parallel').make().send();
+new request.requester(+process.argv[2], process.argv[3]).make().send();
 // new request.requester(10, 'parallel').make();
 
 server.listen(port, hostname, () => {
