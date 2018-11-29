@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
   }, delay);
 });
 
-new request.requester(1000, 'serial').make().send();
+new request.requester(1000, 'parallel').make().send();
 // new request.requester(10, 'parallel').make();
 
 server.listen(port, hostname, () => {

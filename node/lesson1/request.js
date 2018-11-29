@@ -27,14 +27,16 @@ class Requester {
   }
   
   make() {
-    this.requests = new Array(this.n);
+    this.asyncRequestFunctions = new Array(this.n);
     let index = 0;
 
     while(index < this.n) {
-      // error
-      this.requests[index] = new Promise((resolve, reject) => {
-        resolve(http.get('http://127.0.0.1:3000/'));
-      });
+
+      this.asyncRequestFunctions[index] = () => {
+        return new Promise((resolve, reject) => {
+          resolve(http.get('http://127.0.0.1:3000/'));
+        });
+      };
 
       index++;
     }
@@ -43,13 +45,21 @@ class Requester {
 
   send() {
     if (this.requestType === 'parallel') {
-      Promise.all(this.requests);
+      /**
+       * вот тут меня смущает, что несмотря на то, что вроде бы массив и
+       * вроде бы промисов, и вроде бы он передаётся в нужный метод, Но в 
+       * процессе map всё равно ведь происходит последовательный, вызов
+       * каждой функции с созданием запроса
+       */
+      Promise.all(this.asyncRequestFunctions.map(requestFunction => requestFunction()));
       return;
     } 
     if (this.requestType === 'serial') {
-      let maked = 0;
-      for (const request of this.requests) {
-        request.then(result => console.log(++maked + ' request is maked'));
+      let madeRequests = 0;
+      for (const requestFunction of this.asyncRequestFunctions) {
+        requestFunction().then(() => {
+          console.log(++madeRequests + ' request is made');
+        });
       }
       return;
     }
