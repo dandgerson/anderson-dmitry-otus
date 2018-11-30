@@ -13,7 +13,11 @@ let responseCount = 0;
 const server = http.createServer((req, res) => {
   console.log('request starting... ' + requestCount++);
   req.on('error', err => {
-    console.log('Server Error');
+    console.log('Server Error with request');
+    console.error(err.stack);
+  });
+  res.on('error', err => {
+    console.log('Server Error with response');
     console.error(err.stack);
   });
   
