@@ -14,6 +14,8 @@ const server = http.createServer((req, res) => {
   console.log('request starting... ' + requestCount++);
   req.on('error', err => {
     console.log('Server Error with request');
+    res.statusCode = 400;
+    res.end();
     console.error(err.stack);
   });
   res.on('error', err => {
