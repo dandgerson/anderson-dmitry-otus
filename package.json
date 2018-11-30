@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node index.js",
-    "start-node-lesson-1": "cd ./node/lesson1 && node server.js",
+    "start-server-benchmark": "cd ./node/lesson1 && node server.js",
     "start with test": "npm test & npm start"
   },
   "author": "dandgerson@gmail.com",
