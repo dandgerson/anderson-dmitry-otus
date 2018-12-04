@@ -11,6 +11,7 @@ class Tree {
   }
 
   readFile(path) {
+    this.validate(path);
     fs.readFile(path, {encoding: 'utf8'}, (err, data) => {
       if (err) throw err;
       console.log(data);
@@ -18,20 +19,48 @@ class Tree {
   }
 
   readFileSync(path) {
+    this.validate(path);
     const data = fs.readFileSync(path, {encoding: 'utf8'});
     return data;
   }
+
+  getStats(path) {
+    this.validate(path);
+    fs.stat(path, (err, stats) => {
+      return {
+        path: path,
+        isFile: stats.isFile(),
+        isDirectory: stats.isDirectory(),
+      };
+    });
+  }
   
-  getTree() {
+  getTree(path) {
+    this.validate(path);
     const tree = {
       files: [],
       dirs: []
     };
-    tree.path = this.path;
 
-    fs.readFile(this.path, {encoding: 'utf8'}, (err, data) => {
-      if (err) throw err;
-      console.log(data);
+    return new Promise((resolve, reject) => {
+      crawlByPath(path);
+      resolve(tree);
+
+      function crawlByPath(path) {
+        fs.readdir(path, (err, items) =>{
+          for (const item of items) {
+            const itemPath = `${path}${item}`;
+            fs.stat(itemPath, (err, stats) => {
+              console.log(itemPath);
+              stats.isFile() && tree.files.push(itemPath);
+              if (stats.isDirectory()) {
+                tree.dirs.push(itemPath);
+                crawlByPath(itemPath);
+              }
+            });
+          }
+        });
+      }
     });
   
   }
