@@ -75,7 +75,7 @@ class Requester {
       if (typeof asyncRequestFunctions[index] === 'function'
         && index < len) {
         asyncRequestFunctions[index]()
-          .then(res => {
+          .then(() => {
             index++;
             console.log(index + ' request is made');
             serialRequester(asyncRequestFunctions, index);
