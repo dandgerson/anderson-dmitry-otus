@@ -34,7 +34,16 @@ class Requester {
 
       this.asyncRequestFunctions[index] = () => {
         return new Promise((resolve, reject) => {
-          resolve(http.get('http://127.0.0.1:3000/'));
+          http.get('http://127.0.0.1:3000/', res => {
+            const { statusCode } = res;
+            let error;
+            if (statusCode !== 200) {
+              error = new Error('Request Faild.\n' +
+                `Status Code: ${statusCode}`);
+              reject(error);
+            }
+            resolve(res);
+          });
         });
       };
 
@@ -46,27 +55,40 @@ class Requester {
   send() {
     if (this.requestType === 'parallel') {
       /**
-       * вот тут меня смущает, что несмотря на то, что вроде бы массив и
-       * вроде бы промисов, и вроде бы он передаётся в нужный метод, Но в 
-       * процессе map всё равно ведь происходит последовательный, вызов
-       * каждой функции с созданием запроса
+       * При выполнении параллельных запросов, происходит ошибка, она
+       * мне не очевидна, мы могли бы вместе разобрать её, и понять, как
+       * её обработать?
        */
-      Promise.all(this.asyncRequestFunctions.map(requestFunction => requestFunction()));
-      return;
-    } 
-    if (this.requestType === 'serial') {
-      let madeRequests = 0;
-      for (const requestFunction of this.asyncRequestFunctions) {
-        requestFunction().then(() => {
-          console.log(++madeRequests + ' request is made');
-        });
-      }
+      Promise.all(this.asyncRequestFunctions.map(requestFunction => requestFunction()))
+        .then(() => console.log('All of Parallel Requests is made'))
+        .catch(error => console.log(error));
       return;
     }
-    console.error(`
-      this code have not to being executed, 
-      but if you see this message, something goes wrong`);
+
+    if (this.requestType === 'serial') {
+      let madeRequests = 0;
+      serialRequester(this.asyncRequestFunctions, madeRequests);
+      return;
+    }
+
+    function serialRequester(asyncRequestFunctions, index) {
+      if (typeof asyncRequestFunctions[index] === 'function') {
+        asyncRequestFunctions[index]()
+          .then(res => {
+            index++;
+            console.log(index + ' request is made');
+            serialRequester(asyncRequestFunctions, index);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+      else {
+        console.log('All of Serial Requests is made');
+      }
+    }
   }
 }
+
 
 exports.requester = Requester;
