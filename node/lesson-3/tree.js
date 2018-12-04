@@ -32,4 +32,4 @@ class Tree {
 }
 
 
-exports.tree = Tree;
+module.exports = Tree;
