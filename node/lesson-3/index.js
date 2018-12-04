@@ -2,7 +2,7 @@
 
 const Tree = require('./tree');
 
-const result = new Tree('../lesson-3/test.txt')
-  .getTree();
+const tree = new Tree();
 
-console.log(result);
+tree.readFile('./test.txt');
+console.log(tree.readFileSync('./test.txt'), '// sync');
