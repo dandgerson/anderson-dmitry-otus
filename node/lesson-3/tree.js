@@ -44,14 +44,17 @@ class Tree {
 
     return new Promise((resolve, reject) => {
       crawlByPath(path);
-      resolve(tree);
+      Promise.resolve(tree);
 
       function crawlByPath(path) {
         fs.readdir(path, (err, items) =>{
           for (const item of items) {
-            const itemPath = `${path}${item}`;
+            const itemPath = `${path}/${item}`;
             fs.stat(itemPath, (err, stats) => {
               console.log(itemPath);
+              if (!stats) {
+                return;
+              }
               stats.isFile() && tree.files.push(itemPath);
               if (stats.isDirectory()) {
                 tree.dirs.push(itemPath);
@@ -61,6 +64,7 @@ class Tree {
           }
         });
       }
+
     });
   
   }
