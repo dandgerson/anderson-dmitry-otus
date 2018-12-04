@@ -63,15 +63,17 @@ class Requester {
         .catch(error => console.log(error));
       return;
     }
-
+    
     if (this.requestType === 'serial') {
       let index = 0;
       serialRequester(this.asyncRequestFunctions, index);
       return;
     }
-
+    
+    const len = this.asyncRequestFunctions.length;
     function serialRequester(asyncRequestFunctions, index) {
-      if (typeof asyncRequestFunctions[index] === 'function') {
+      if (typeof asyncRequestFunctions[index] === 'function'
+        && index < len) {
         asyncRequestFunctions[index]()
           .then(res => {
             index++;
