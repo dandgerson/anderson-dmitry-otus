@@ -11,7 +11,7 @@ let requestCount = 0;
 let responseCount = 0;
 
 const server = http.createServer((req, res) => {
-  console.log('request starting... ' + requestCount++);
+  console.log('request starting... ' + ++requestCount);
   req.on('error', err => {
     console.log('Server Error with request');
     res.statusCode = 400;
@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
   
   //response
   setTimeout(() => {
-    console.log('response starting... ' + responseCount++);
+    console.log('response starting... ' + ++responseCount);
     res.writeHeader(200, {'Content-Type': 'text/html'});
     res.write('<h1>NodeJs local server banchmark:<h1><br>\n');
     res.write(`
