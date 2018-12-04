@@ -65,8 +65,8 @@ class Requester {
     }
 
     if (this.requestType === 'serial') {
-      let madeRequests = 0;
-      serialRequester(this.asyncRequestFunctions, madeRequests);
+      let index = 0;
+      serialRequester(this.asyncRequestFunctions, index);
       return;
     }
 
