@@ -36,9 +36,8 @@ class Requester {
         return new Promise((resolve, reject) => {
           http.get('http://127.0.0.1:3000/', res => {
             const { statusCode } = res;
-            let error;
             if (statusCode !== 200) {
-              error = new Error('Request Faild.\n' +
+              const error = new Error('Request Faild.\n' +
                 `Status Code: ${statusCode}`);
               reject(error);
             }
