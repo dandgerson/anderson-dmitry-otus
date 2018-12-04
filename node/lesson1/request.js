@@ -27,12 +27,10 @@ class Requester {
   }
   
   make() {
-    this.asyncRequestFunctions = new Array(this.n);
-    let index = 0;
-
-    while(index < this.n) {
-
-      this.asyncRequestFunctions[index] = () => {
+    this.asyncRequestFunctions = [];
+    
+    for (let i = 0; i < this.n; i++) {
+      this.asyncRequestFunctions.push(() => {
         return new Promise((resolve, reject) => {
           http.get('http://127.0.0.1:3000/', res => {
             const { statusCode } = res;
@@ -44,33 +42,27 @@ class Requester {
             resolve(res);
           });
         });
-      };
-
-      index++;
+      }); 
     }
+
     return this;
   }
 
   send() {
     if (this.requestType === 'parallel') {
-      /**
-       * При выполнении параллельных запросов, происходит ошибка, она
-       * мне не очевидна, мы могли бы вместе разобрать её, и понять, как
-       * её обработать?
-       */
       Promise.all(this.asyncRequestFunctions.map(requestFunction => requestFunction()))
         .then(() => console.log('All of Parallel Requests is made'))
         .catch(error => console.log(error));
       return;
     }
     
+    const len = this.asyncRequestFunctions.length;
     if (this.requestType === 'serial') {
       let index = 0;
       serialRequester(this.asyncRequestFunctions, index);
       return;
     }
     
-    const len = this.asyncRequestFunctions.length;
     function serialRequester(asyncRequestFunctions, index) {
       if (typeof asyncRequestFunctions[index] === 'function'
         && index < len) {
