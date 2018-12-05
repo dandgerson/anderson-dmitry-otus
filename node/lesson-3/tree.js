@@ -42,31 +42,40 @@ class Tree {
       dirs: []
     };
 
+    /**
+     * как мне затриггерить pathCrawler, чтобы вернуть результат?
+     */
+
     return new Promise((resolve, reject) => {
-      crawlByPath(path);
-      Promise.resolve(tree);
-
-      function crawlByPath(path) {
-        fs.readdir(path, (err, items) =>{
-          for (const item of items) {
-            const itemPath = `${path}/${item}`;
-            fs.stat(itemPath, (err, stats) => {
-              console.log(itemPath);
-              if (!stats) {
-                return;
-              }
-              stats.isFile() && tree.files.push(itemPath);
-              if (stats.isDirectory()) {
-                tree.dirs.push(itemPath);
-                crawlByPath(itemPath);
-              }
-            });
-          }
-        });
-      }
-
+      pathCrawler(path, tree);
+      resolve(tree);
     });
-  
+    
+    function pathCrawler(path, tree) {
+      
+      fs.readdir(path, (err, items) =>{
+        for (const item of items) {
+          const itemPath = `${path}/${item}`;
+          
+          fs.stat(itemPath, (err, stats) => {
+            stats.isFile() && insertFile(itemPath, tree);
+            if (stats.isDirectory()) {
+              insertDirectory(itemPath, tree);
+              pathCrawler(itemPath, tree);
+            }
+          });
+        }
+      });
+    }
+
+    function insertFile(filePath, tree) {
+      tree.files.push(filePath);
+      // console.log(tree);
+    }
+    function insertDirectory(dirPath, tree) {
+      tree.dirs.push(dirPath);
+      // console.log(tree);
+    }
   }
 
 }

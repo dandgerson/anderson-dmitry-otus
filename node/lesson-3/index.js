@@ -8,6 +8,4 @@ const tree = new Tree();
 // console.log(tree.readFileSync('./test.txt'), '// sync');
 
 const fileTree = tree.getTree(process.argv[2]);
-fileTree
-  .then(tree => console.log(tree))
-  .catch(error => {throw error;});
+fileTree.then(tree => console.log(tree));
