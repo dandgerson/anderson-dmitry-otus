@@ -7,5 +7,5 @@ const tree = new Tree();
 // tree.readFile('./test.txt');
 // console.log(tree.readFileSync('./test.txt'), '// sync');
 
-const fileTree = tree.getTree(process.argv[2]);
+const fileTree = tree.getTree('../../node');
 fileTree.then(tree => console.log(tree));

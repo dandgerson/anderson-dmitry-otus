@@ -42,40 +42,53 @@ class Tree {
       dirs: []
     };
 
-    /**
-     * как мне затриггерить pathCrawler, чтобы вернуть результат?
-     */
+    const count = {
+      items: 0,
+      current: 0,
+    };
 
-    return new Promise((resolve, reject) => {
-      pathCrawler(path, tree);
-      resolve(tree);
-    });
     
-    function pathCrawler(path, tree) {
+    return new Promise((resolve, reject) => {
       
-      fs.readdir(path, (err, items) =>{
-        for (const item of items) {
-          const itemPath = `${path}/${item}`;
-          
-          fs.stat(itemPath, (err, stats) => {
-            stats.isFile() && insertFile(itemPath, tree);
-            if (stats.isDirectory()) {
-              insertDirectory(itemPath, tree);
-              pathCrawler(itemPath, tree);
-            }
-          });
+      pathCrawler(path, tree, resolver);
+      
+      function resolver(count, items) {
+        console.log('items: ', items, 'itemsCount: ', count.items);
+        console.log('currentCount: ', count.current);
+        if (count.current === count.items) {
+          resolve(tree);
         }
-      });
-    }
+      }
 
-    function insertFile(filePath, tree) {
-      tree.files.push(filePath);
-      // console.log(tree);
-    }
-    function insertDirectory(dirPath, tree) {
-      tree.dirs.push(dirPath);
-      // console.log(tree);
-    }
+      function pathCrawler(path, tree, callback) {
+        
+        fs.readdir(path, (err, items) => {
+          count.items += items.length;
+          for (const item of items) {
+            
+            count.current++;
+            const itemPath = `${path}/${item}`;
+            
+            fs.stat(itemPath, (err, stats) => {
+              stats.isFile() && insertFile(itemPath, tree);
+              if (stats.isDirectory()) {
+                insertDirectory(itemPath, tree);
+                pathCrawler(itemPath, tree, resolver);
+              } 
+              callback(count, items);
+            });
+          }
+        });
+      }
+  
+      function insertFile(filePath, tree) {
+        tree.files.push(filePath);
+      }
+      function insertDirectory(dirPath, tree) {
+        tree.dirs.push(dirPath);
+      }
+    });
+
   }
 
 }
