@@ -52,9 +52,7 @@ class Tree {
       
       pathCrawler(path, tree, resolver);
       
-      function resolver(count, items) {
-        console.log('items: ', items, 'itemsCount: ', count.items);
-        console.log('currentCount: ', count.current);
+      function resolver(count) {
         if (count.current === count.items) {
           resolve(tree);
         }
@@ -75,7 +73,7 @@ class Tree {
                 insertDirectory(itemPath, tree);
                 pathCrawler(itemPath, tree, resolver);
               } 
-              callback(count, items);
+              callback(count);
             });
           }
         });
