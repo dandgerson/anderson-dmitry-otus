@@ -64,10 +64,11 @@ class Tree {
           count.items += items.length;
           for (const item of items) {
             
-            count.current++;
             const itemPath = `${path}/${item}`;
             
             fs.stat(itemPath, (err, stats) => {
+              count.current++;
+              console.log(count);
               stats.isFile() && insertFile(itemPath, tree);
               if (stats.isDirectory()) {
                 insertDirectory(itemPath, tree);
