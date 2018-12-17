@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node index.js",
     "start-with-test": "npm test & npm start",
-    "get-tree": "cd ./node/lesson-3/ && node index.js"
+    "tree": "node index.js"
   },
   "author": "dandgerson@gmail.com",
   "license": "ISC",

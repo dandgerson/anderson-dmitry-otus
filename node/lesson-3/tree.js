@@ -13,7 +13,6 @@ const tree = path => {
     processed: 0,
   };
 
-  
   return new Promise((resolve, reject) => {
     
     pathCrawler(path, result, callback);
