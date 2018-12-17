@@ -12,52 +12,31 @@ function tree(path) {
     dirs: []
   };
 
-  return pathWalker(path, result);
+  return new Promise((resolve, reject) => {
+    pathWalker(path, result)
+      .then(result => resolve(result));
+  });
 
   function pathWalker(path, result) {
-    return readdir(path)
-      .then(files => {
-        files.forEach(file => {
-          const filePath = `${path}/${file}`;
-          stat(filePath)
-            .then(stats => {
-              stats && stats.isFile() && result.files.push(filePath);
-              if (stats && stats.isDirectory()) {
-                result.dirs.push(filePath);
-                pathWalker(filePath, result);
-              }
-              console.log(result);
-            });
-        });
-      });
+    return new Promise((resolve, reject) => {
+      readdir(path)
+        .then(files => {
+          files.forEach(file => {
+            const filePath = `${path}/${file}`;
+            stat(filePath)
+              .then(stats => {
+                stats && stats.isFile() && result.files.push(filePath);
+                if (stats && stats.isDirectory()) {
+                  result.dirs.push(filePath);
+                  pathWalker(filePath, result);
+                }
+                // console.log(result);
+              });
+          });
+        })
+        .then(result => resolve(result));
+    });
   }
-        
-  // function pathCrawler(path, result, callback) {
-    
-  //   fs.readdir(path, (err, files) => {
-  //     count.files += files.length;
-  //     for (const file of files) {
-            
-  //       const filePath = `${path}/${file}`;
-        
-  //       fs.stat(filePath, (err, stats) => {
-  //         count.processed++;
-  //         console.log(count);
-  //         stats.isFile() && result.files.push(filePath);
-  //         if (stats.isDirectory()) {
-  //           result.dirs.push(filePath);
-  //           pathCrawler(filePath, result, callback);
-  //         } 
-  //         callback(count);
-  //       });
-  //     }
-  //   });
-  // }
-  // function callback(count) {
-  //   if (count.processed >= count.files) {
-  //     resolve(result);
-  //   }
-  // }
 }
 
 
