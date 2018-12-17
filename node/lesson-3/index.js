@@ -2,5 +2,6 @@
 
 const tree = require('./tree');
 
-tree('./node');
+tree('./node')
+  .then(result => console.log(result));
 

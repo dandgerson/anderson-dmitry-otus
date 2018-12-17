@@ -2,58 +2,50 @@
 
 const fs = require('fs');
 
-const tree =  (path) => {
+const tree = path => {
   const result = {
     files: [],
     dirs: []
   };
 
   const count = {
-    items: 0,
-    current: 0,
+    files: 0,
+    processed: 0,
   };
 
   
   return new Promise((resolve, reject) => {
     
-    pathCrawler(path, result, resolver);
+    pathCrawler(path, result, callback);
     
-    function resolver(count) {
-      if (count.current === count.items) {
+    function callback(count) {
+      if (count.processed >= count.files) {
         resolve(result);
       }
     }
 
-    function pathCrawler(path, tree, callback) {
+    function pathCrawler(path, result, callback) {
       
-      fs.readdir(path, (err, items) => {
-        count.items += items.length;
-        for (const item of items) {
+      fs.readdir(path, (err, files) => {
+        count.files += files.length;
+        for (const file of files) {
           
-          const itemPath = `${path}/${item}`;
+          const filePath = `${path}/${file}`;
           
-          fs.stat(itemPath, (err, stats) => {
-            count.current++;
+          fs.stat(filePath, (err, stats) => {
+            count.processed++;
             console.log(count);
-            stats.isFile() && insertFile(itemPath, tree);
+            stats.isFile() && result.files.push(filePath);
             if (stats.isDirectory()) {
-              insertDirectory(itemPath, tree);
-              pathCrawler(itemPath, tree, resolver);
+              result.dirs.push(filePath);
+              pathCrawler(filePath, result, callback);
             } 
             callback(count);
           });
         }
       });
     }
-
-    function insertFile(filePath, tree) {
-      tree.files.push(filePath);
-    }
-    function insertDirectory(dirPath, tree) {
-      tree.dirs.push(dirPath);
-    }
   });
-
 };
 
 
