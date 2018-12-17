@@ -14,7 +14,7 @@ function tree(path) {
 
   return new Promise((resolve, reject) => {
     pathWalker(path, result)
-      .then(result => resolve(result));
+      .then(() => resolve(result));
   });
 
   function pathWalker(path, result) {
@@ -31,10 +31,12 @@ function tree(path) {
                   pathWalker(filePath, result);
                 }
                 // console.log(result);
-              });
+              })
+              .catch(err => console.log(err));
           });
         })
-        .then(result => resolve(result));
+        .then(() => resolve(result))
+        .catch(err => console.log(err));
     });
   }
 }
