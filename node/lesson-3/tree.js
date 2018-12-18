@@ -9,55 +9,55 @@ function tree(path) {
   };
   const count = {
     files: 0,
-    processed: 0,
+    nextItemIndex: 0,
   };
   
   return new Promise((resolve, reject) => {
     
-    iterateOver(path, iterator, callback);
-
-    function iterateOver(path, iterator, callback) {
-      
-      
-      fs.readdir(path, (err, files) => {
-        count.files += files.length;
-        
-        for (const file of files) {
-          iterator(file, report);
-        }
-
-      });
-      
-      function report() {
-        console.log('report', result);
-        count.processed++;
-        if (count.processed === count.files) {
-          callback();
-        }
-      }
-    }
+    waterfallOver(path, iterator, callback);
     
-    function iterator(file, report) {
-      const filePath = `${path}/${file}`;
-      console.log('filePath: ', filePath);
-      
-      fs.stat(filePath, (err, stats) => {
-        if (stats && stats.isDirectory()) {
-          result.dirs.push(filePath);
-          report();
-          iterateOver(filePath, iterator, report);
-        } else {
-          stats && stats.isFile() && result.files.push(filePath);
-          report();
-        }
-      });
-    }
-
     function callback() {
       resolve(result);
     }
-
   });
+
+  function waterfallOver(path, iterator, callback) {
+
+    fs.readdir(path, (err, files) => {
+      count.files += files.length;
+      console.log(count);
+
+      iterator(files[0], report);
+
+      function report() {
+        console.log('report', result);
+        count.nextItemIndex++;
+        if (count.nextItemIndex === count.files) {
+          callback();
+        } else {
+          iterator(files[count.nextItemIndex], report);
+        }
+      }
+    });
+  }
+  
+  function iterator(file, report) {
+    if (!file) return report();
+    const filePath = `${path}/${file}`;
+    console.log('filePath: ', filePath);
+    
+    fs.stat(filePath, (err, stats) => {
+      if (stats && stats.isDirectory()) {
+        result.dirs.push(filePath);
+        report();
+        waterfallOver(filePath, iterator, report);
+      } else {
+        console.log('here');
+        stats && stats.isFile() && result.files.push(filePath);
+        report();
+      }
+    });
+  }
 }
 
 
