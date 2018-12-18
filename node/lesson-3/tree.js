@@ -13,19 +13,15 @@ function tree(path) {
   };
   
   return new Promise((resolve, reject) => {
-    
     iterateOver(path, iterator, callback);
 
     function iterateOver(path, iterator, callback) {
       
-      
       fs.readdir(path, (err, files) => {
         count.files += files.length;
-        
         for (const file of files) {
           iterator(file, report);
         }
-
       });
       
       function report() {
@@ -56,7 +52,6 @@ function tree(path) {
     function callback() {
       resolve(result);
     }
-
   });
 }
 
