@@ -1,63 +1,65 @@
 'use strict';
 
 const fs = require('fs');
+const { promisify } = require('util');
+
+const readdir = promisify(fs.readdir);
+const stat = promisify(fs.stat);
 
 function tree(path) {
   const result = {
     files: [],
     dirs: []
   };
-  const count = {
-    files: 0,
-    processed: 0,
-  };
-  
+
+  let collection = new Set();
+
+  function getFiles(path) {
+    return new Promise((resolve, reject) => {
+      readdir(path)
+        .then(files => {
+          files.forEach(file => {
+            collection.add(`${path}/${file}`);
+          });
+          console.log(collection);
+          return Promise.resolve(collection);
+        })
+        .then(collection => {
+          for (const item of collection) {
+            stat(item)
+              .then(stats => {
+                if (stats.isDirectory()) {
+                  getFiles(item);
+                }
+              })
+              .catch(error => {
+                throw error;
+              });
+          }
+          return Promise.resolve(collection);
+        })
+        .then(collection => {
+          resolve(collection);
+        })
+        .catch(error => {
+          throw error;
+        });
+    })
+      .catch(error => {
+        throw error;
+      });
+  }
+
   return new Promise((resolve, reject) => {
-    
-    iterateOver(path, iterator, callback);
-
-    function iterateOver(path, iterator, callback) {
-      
-      
-      fs.readdir(path, (err, files) => {
-        count.files += files.length;
-        
-        for (const file of files) {
-          iterator(file, report);
-        }
-
+    getFiles(path)
+      .then(collection => {
+        resolve(collection);
+      })
+      .catch(error => {
+        throw error;
       });
-      
-      function report() {
-        console.log('report', result);
-        count.processed++;
-        if (count.processed === count.files) {
-          callback();
-        }
-      }
-    }
-    
-    function iterator(file, report) {
-      const filePath = `${path}/${file}`;
-      console.log('filePath: ', filePath);
-      
-      fs.stat(filePath, (err, stats) => {
-        if (stats && stats.isDirectory()) {
-          result.dirs.push(filePath);
-          report();
-          iterateOver(filePath, iterator, report);
-        } else {
-          stats && stats.isFile() && result.files.push(filePath);
-          report();
-        }
-      });
-    }
-
-    function callback() {
-      resolve(result);
-    }
-
   });
+  
 }
 
 
