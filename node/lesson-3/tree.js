@@ -13,6 +13,7 @@ function tree(path) {
   };
 
   let collection = new Set();
+  let processed = [];
 
   function getFiles(path) {
     return new Promise((resolve, reject) => {
@@ -21,21 +22,33 @@ function tree(path) {
           items.forEach(item => {
             collection.add(`${path}/${item}`);
           });
-          console.log(collection);
+          // console.log(collection);
           return collection;
         })
         .then(collection => {
           for (const item of collection) {
             stat(item)
               .then(itemStats => {
-                if (itemStats.isDirectory()) {
-                  getFiles(item);
+                if (!processed.includes(item)) {
+                  if (itemStats.isDirectory()) {
+                    processed.push(item);
+                    result.dirs.push(item);
+                    getFiles(item);
+                  }
+                  if (itemStats.isFile()) {
+                    processed.push(item);
+                    result.files.push(item);
+                  }
                 }
               })
               .catch(error => {
                 throw error;
               });
           }
+          return collection;
+        })
+        .then(collection => {
+          resolve(collection);
         });
     })
       .catch(error => {
@@ -45,8 +58,8 @@ function tree(path) {
 
   return new Promise((resolve, reject) => {
     getFiles(path)
-      .then(collection => {
-        resolve(collection);
+      .then(result => {
+        resolve(result);
       })
       .catch(error => {
         throw error;
