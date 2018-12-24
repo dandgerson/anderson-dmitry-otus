@@ -17,18 +17,18 @@ function tree(path) {
   function getFiles(path) {
     return new Promise((resolve, reject) => {
       readdir(path)
-        .then(files => {
-          files.forEach(file => {
-            collection.add(`${path}/${file}`);
+        .then(items => {
+          items.forEach(item => {
+            collection.add(`${path}/${item}`);
           });
           console.log(collection);
-          return Promise.resolve(collection);
+          return collection;
         })
         .then(collection => {
           for (const item of collection) {
             stat(item)
-              .then(stats => {
-                if (stats.isDirectory()) {
+              .then(itemStats => {
+                if (itemStats.isDirectory()) {
                   getFiles(item);
                 }
               })
@@ -36,13 +36,6 @@ function tree(path) {
                 throw error;
               });
           }
-          return Promise.resolve(collection);
-        })
-        .then(collection => {
-          resolve(collection);
-        })
-        .catch(error => {
-          throw error;
         });
     })
       .catch(error => {
