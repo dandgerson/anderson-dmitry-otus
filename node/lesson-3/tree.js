@@ -15,6 +15,11 @@ function tree(path) {
   let collection = new Set();
   let processed = [];
 
+  // Where is the termination condition?
+  //
+  // All of the recursive function must have the termination condition?
+  // where is this one in that function?
+
   function getFiles(path) {
     return new Promise((resolve, reject) => {
       readdir(path)
