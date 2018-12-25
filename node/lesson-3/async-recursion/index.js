@@ -104,13 +104,15 @@ const getSentenceAsyncAwait = async function(offset = 0) {
 
 module.exports = {
   getSentenceFragment,
-  getSentenceFragmentAsync,
-  getSentenceFragmentPromise,
-  getSentenceFragmentAsyncAwait,
-
   getSentence,
-  getSentenceRec,
+  
+  getSentenceFragmentAsync,
   getSentenceAsync,
+  getSentenceRec,
+  
+  getSentenceFragmentPromise,
   getSentencePromise,
+
+  getSentenceFragmentAsyncAwait,
   getSentenceAsyncAwait,
 };
