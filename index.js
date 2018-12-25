@@ -10,6 +10,5 @@ const tree = require('./node/lesson-3/tree');
 //   });
 
 const asyncRecursion = require('./node/lesson-3/async-recursion');
-const result = asyncRecursion.getSentenceRec();
-
-console.log(result);
+asyncRecursion.getSentenceAsyncAwait()
+  .then(sentence => console.log(sentence));
