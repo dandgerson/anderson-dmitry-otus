@@ -9,7 +9,8 @@ const tree = require('./node/lesson-3/tree');
 //     throw error;
 //   });
 
-const asyncRecursion = require('./node/lesson-3/async-recursion');
-const result = asyncRecursion.getSentenceRec();
+// const asyncRecursion = require('./node/lesson-3/async-recursion');
+// const result = asyncRecursion.getSentenceRec();
 
-console.log(result);
+// console.log(result);
+
