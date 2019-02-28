@@ -10,66 +10,64 @@ const stat = promisify(fs.stat);
  * @param {string} directoryPath - path to directoryh
  */
 
-stringifyTree(path.join(__dirname));
+stringifyTree(path.resolve(__dirname));
 
 async function stringifyTree(root) {
-// implementation
+  // implementation
   const result = {
     files: [],
     dirs: []
   };
+  
+  let nodes = [];
 
-  const tree = await getNodes(root);
+  // call the functions
+  if (await isDirectory(root)) nodes = nodes.concat(await getNodes(root));
 
-  await collectNodes(
-    tree, 
-    async node => {
-      const probeResult = await probe(node);
-      probeResult === 'directory' && result.dirs.push(node);
-      probeResult === 'file' && result.files.push(node);
-    }
-  );
+  console.log(`Nodes: ${nodes}`);
 
-  console.log(result);
+  await collectNodes(nodes);
 
   return result;
-  
-  async function collectNodes(nodes, visitor) {
+
+  /**
+   * 
+   * @param {array} - nodes 
+   */
+  async function collectNodes(nodes) {
     for (const node of nodes) {
-      const probeResult = await probe(node);
-      if (probeResult === 'directory') {
-        for (const child of node) {
-          collectNodes(await getNodes(child), visitor);
-        }
-      } else {
-        visitor(nodes);
+      const nodePath = path.resolve(node);
+      if (await isDirectory(nodePath)) {
+        console.log(`This is Directory: ${node}`);
+        await collectNodes(await getNodes(path.join(__dirname, node)));
+      }
+      if (await isFile(nodePath)) {
+        console.log(`This is File: ${node}`);
       }
     }
-    
-    // for (let node of nodes) {
-    //   collection.push(node);
-    //   try {
-    //     const probeResult = await probe(root + '\\' + node);
-    //     if (probeResult === 'directory') {
-    //       nodePath = node;
-    //       console.log(`nodePath: ${nodePath}`);
-    //       collectNodes(await getNodes(root + '\\' + nodePath));
-    //     }
-    //   } catch(err) {
-    //     err && console.error(err);
-    //   }
-    // }
   }
 
   async function getNodes(nodePath) {
     return await readdir(nodePath);
   }
+  
+  async function isDirectory(nodePath) {
+    const probeResult = await probe(nodePath);
+    return probeResult === 'directory';
+  }
+  
+  async function isFile(nodePath) {
+    const probeResult = await probe(nodePath);
+    return probeResult === 'file';
+  }
 
-  async function probe(path) {
-    const nodeStat = await stat(path);
+  async function probe(nodePath) {
+    const nodeStat = await stat(nodePath);
     if (nodeStat.isFile()) return 'file';
     if (nodeStat.isDirectory()) return 'directory';
     return false;
   }
 
 }
+
+
