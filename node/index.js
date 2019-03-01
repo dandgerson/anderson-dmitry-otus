@@ -26,7 +26,9 @@ async function stringifyTree(root) {
 
   console.log(`Nodes: ${nodes}`);
 
-  await collectNodes(nodes);
+  await collectNodes(nodes, () => {
+
+  });
 
   return result;
 
@@ -34,12 +36,14 @@ async function stringifyTree(root) {
    * 
    * @param {array} - nodes 
    */
-  async function collectNodes(nodes) {
+  async function collectNodes(nodes, callback) {
     for (const node of nodes) {
       const nodePath = path.resolve(node);
+      console.log(nodePath);
       if (await isDirectory(nodePath)) {
         console.log(`This is Directory: ${node}`);
-        await collectNodes(await getNodes(path.join(__dirname, node)));
+        callback();
+        await collectNodes(await getNodes(path.join(__dirname, node)), callback);
       }
       if (await isFile(nodePath)) {
         console.log(`This is File: ${node}`);
