@@ -1,5 +1,6 @@
 'use strict';
 
+const { promisify } = require('util');
 const fs = require('fs');
 
 function tree(path) {
@@ -7,52 +8,34 @@ function tree(path) {
     files: [],
     dirs: []
   };
-  const count = {
-    files: 0,
-    processed: 0,
-  };
-  
+
   return new Promise((resolve, reject) => {
-    iterateOver(path, iterator, callback);
-
-    function iterateOver(path, iterator, callback) {
-      
-      fs.readdir(path, (err, files) => {
-        count.files += files.length;
-        for (const file of files) {
-          iterator(file, report);
-        }
-      });
-      
-      function report() {
-        console.log('report', result);
-        count.processed++;
-        if (count.processed === count.files) {
-          callback();
-        }
-      }
-    }
-    
-    function iterator(file, report) {
-      const filePath = `${path}/${file}`;
-      console.log('filePath: ', filePath);
-      
-      fs.stat(filePath, (err, stats) => {
-        if (stats && stats.isDirectory()) {
-          result.dirs.push(filePath);
-          report();
-          iterateOver(filePath, iterator, report);
-        } else {
-          stats && stats.isFile() && result.files.push(filePath);
-          report();
-        }
-      });
-    }
-
-    function callback() {
-      resolve(result);
-    }
+    pathWalker(path, result)
+      .then(() => resolve(result));
   });
+
+  function pathWalker(path, result) {
+    return new Promise((resolve, reject) => {
+      readdir(path)
+        .then(files => {
+          files.forEach(file => {
+            const filePath = `${path}/${file}`;
+            stat(filePath)
+              .then(stats => {
+                stats && stats.isFile() && result.files.push(filePath);
+                if (stats && stats.isDirectory()) {
+                  result.dirs.push(filePath);
+                  pathWalker(filePath, result);
+                }
+                // console.log(result);
+              })
+              .catch(err => console.log(err));
+          });
+        })
+        .then(() => resolve(result))
+        .catch(err => console.log(err));
+    });
+  }
 }
 
 
