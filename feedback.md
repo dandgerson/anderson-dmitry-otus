@@ -31,7 +31,7 @@
 
 - Сначала прочитывал о паттерне в [Head First Design Patterns](http://shop.oreilly.com/product/9780596007126.do)
 - Затем читал о нём в [книге GOF](https://www.ozon.ru/context/detail/id/2457392/)
-- И, наконец, изучал книгу [Addy Osmani Learning JavaScript Design Patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/) рассматривая конкретным реализации паттернов на родном языке.
+- И, наконец, изучал книгу [Addy Osmani Learning JavaScript Design Patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), рассматривая конкретную реализацую этого паттерна на родном языке.
 
 В конце концов, ко мне пришло понимание, что основной проблемой является мой слабый навык решения задач в принципе. Распознав это, как самое узкое место, я решил сконцентрироваться на этом, и принялся нарешивать программистские задачки на [codewars.com](https://www.codewars.com/users/dandgerson).
 
