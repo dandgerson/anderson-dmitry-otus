@@ -43,7 +43,7 @@
 
 Для этого я завёл [небольшой репозиторий](https://github.com/dandgerson/codewars-kata) на [GitHub](https://github.com) для решений наиболее ярких и сложных задач в [VSCode](https://code.visualstudio.com/). Покрываю их простыми тестами с помощью [Mocha](https://mochajs.org/) и [Chai](https://www.chaijs.com/), применяя [концепции TDD](https://medium.com/javascript-scene/tdd-the-rite-way-53c9b46f45e3), которые так подробно рассматривались на одном из занятий в секции NodeJS. Нужно сказать, что это занятие очень ярко отпечаталось у меня в памяти и было одним из лучших, хотя трудно давать рейтинг, все они были хорошими и полезными.
 
-Также практикую отладку кода с помощью этой IDE, используя настройки окружения для отладки во время тестирования из [этого мануала](https://github.com/Microsoft/vscode-recipes/tree/master/debugging-mocha-tests)
+Также практикую отладку кода с помощью этой IDE, используя настройки окружения для отладки во время тестирования из [этого мануала](https://github.com/Microsoft/vscode-recipes/tree/master/debugging-mocha-tests). Можно отметить, что отладка в VSCode NodeJS приложения или просто кода запускаемого на ноде, доставляет удовольствие, т.к. в процессе её видно как указатель заходит в модули Node и можно видеть, как всё устроено - хорошая возможность изучать этот код.
 
 Настроил линтер [Eslint](https://eslint.org/) в соответствии с [Airbnb JavaScript Style Guide](http://airbnb.io/javascript/)
 ```"eslint-config-airbnb-base": "^13.1.0",```
